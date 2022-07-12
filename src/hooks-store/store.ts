@@ -7,7 +7,6 @@ let actions:any = {};
 export const useStore = () => {
   const setState = useState(globalState)[1];
 
-
   const dispatch = (actionIdentifier: string, payload: string) => {
     const newState = actions[actionIdentifier as keyof typeof actions](globalState, payload);
     globalState = {...globalState, ...newState}
@@ -19,7 +18,6 @@ export const useStore = () => {
 
   useEffect(() => {
     listeners.push(setState);
-  
     return () => {
       listeners = listeners.filter((l) => l !== setState)
     }
@@ -29,7 +27,7 @@ export const useStore = () => {
   return {globalState, dispatch}
 };
 
-export const initStore = (userActions:{}, initialState:any) => {
+export const initStore = <Actions extends Object, State extends object>(userActions:Actions, initialState:State) => {
   if(initialState){
     globalState = {...globalState, ...initialState}
   }

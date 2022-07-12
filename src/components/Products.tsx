@@ -3,8 +3,7 @@ import Product from './Product';
 import { useStore } from '../hooks-store/store';
 import { IProduct } from '../types'
 
-function Products() {
-
+const Products: React.FC = () => {
   const { globalState } = useStore()
 
   return (

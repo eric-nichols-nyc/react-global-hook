@@ -33,3 +33,19 @@
   flex-direction: column;
   margin: 0 10px;
 }
+
+.addtocart{
+  padding: 15px 20px;
+  cursor: pointer;
+  margin-top:15px;
+  background-color:green;
+  color: white;
+  text-transform: uppercase;
+}
+
+.addtocart.remove{
+  padding: 15px 20px;
+  cursor: pointer;
+  margin-top:15px;
+  background-color:red;
+}

@@ -13,7 +13,6 @@ export const configureStore = () => {
     },
     REMOVE_FROM_CART: (state: any, id: string) => {
       const updatedCart = state.cart.filter((p: IProduct) => p.id !== id);
-      console.log(updatedCart);
       return { cart: updatedCart };
     },
   };
