@@ -3,7 +3,6 @@ import { useStore } from '../hooks-store/store'
 import { IProduct } from '../types'
 
 export const Button = (data: { id: string, addedToCart: boolean }) => {
-  console.log('BUTTON RENDERED')
   const { id, addedToCart } = data;
   const { dispatch } = useStore();
   const [addedCopy, setAddedCopy] = useState('add to cart');

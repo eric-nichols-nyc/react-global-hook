@@ -5,11 +5,12 @@ import { IProduct } from '../types'
 
 const Products: React.FC = () => {
   const { globalState } = useStore()
-
+  const { products } = globalState
+  
   return (
     <div className="products">
       {
-        globalState.products.map((p: IProduct) =>
+        products.map((p: IProduct) =>
           <Product key={p.id} id={p.id} title={p.title} description={p.description} addedToCart={p.addedToCart} />
         )
       }
