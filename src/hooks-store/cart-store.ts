@@ -1,5 +1,11 @@
-import { initStore } from './store';
+import { addToStore } from './store';
 import { IProduct } from '../types';
+
+interface IState {
+  cart: IProduct[],
+  products: IProduct[],
+}
+
 
 const initialState = {
   cart: [],
@@ -7,9 +13,9 @@ const initialState = {
 
 export const configureStore = () => {
   const actions = {
-    ADD_TO_CART: (state: any, id: string) => {
-      const product = state.products.find((p: IProduct) => p.id === id);
-      state.cart.push(product);
+    ADD_TO_CART: (state: IState, id: string) => {
+      const product = state.products.find((p) => p.id === id);
+      if(product) state.cart.push(product);
     },
     REMOVE_FROM_CART: (state: any, id: string) => {
       const updatedCart = state.cart.filter((p: IProduct) => p.id !== id);
@@ -17,7 +23,7 @@ export const configureStore = () => {
     },
   };
 
-  initStore(actions, initialState);
+  addToStore(actions, initialState);
 };
 
 export default configureStore;

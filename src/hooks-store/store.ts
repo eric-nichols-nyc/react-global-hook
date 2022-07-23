@@ -21,7 +21,7 @@ Once an action is dispatched every function listening to that action will be exe
 
 export const useStore = () => {
   const setState = useState(globalState)[1];
-  const dispatch = (actionIdentifier: string, payload: string) => {
+  const dispatch = (actionIdentifier: string, payload: any) => {
     const newState = actions[actionIdentifier as keyof typeof actions](
       globalState,
       payload
@@ -43,12 +43,11 @@ export const useStore = () => {
   return { globalState, dispatch };
 };
 
-
 /* 
   Provide a way to add items to the globalstate and actions objects
 */
 
-export const initStore = <Actions extends Object, State extends object>(
+export const addToStore = <Actions extends Object, State extends object>(
   userActions: Actions,
   initialState: State
 ) => {

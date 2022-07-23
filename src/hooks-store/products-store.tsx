@@ -1,4 +1,4 @@
-import { initStore } from './store';
+import { addToStore } from './store';
 import { IProduct } from '../types'
 
 const products = [
@@ -28,9 +28,14 @@ const products = [
   }
 ]
 
+interface IState {
+  products: IProduct[],
+}
+
 const configureStore = () => {
   const actions = {
-    ADDED_TO_CART: (state: any, id: string) => {
+    ADDED_TO_CART: (state: IState, id: string):IState => {
+      console.log(typeof state, state)
       let targetIndex = state.products.findIndex((p: IProduct) => p.id === id)
       let updatedProducts = [...state.products];
       updatedProducts[targetIndex] = {
@@ -41,7 +46,7 @@ const configureStore = () => {
     }
   }
 
-  initStore(actions, { products })
+  addToStore(actions, { products })
 }
 
 export default configureStore;

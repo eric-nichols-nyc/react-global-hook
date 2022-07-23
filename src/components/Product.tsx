@@ -7,7 +7,6 @@ export const Button = (data: { id: string, addedToCart: boolean }) => {
   const { dispatch } = useStore();
   const [addedCopy, setAddedCopy] = useState('add to cart');
 
-
   const addRemoveFromCart = (bool: boolean) => {
     if (!bool) {
       dispatch('ADDED_TO_CART', id)
@@ -33,7 +32,6 @@ export const Button = (data: { id: string, addedToCart: boolean }) => {
 
 
 const Product: React.FC<IProduct> = (data) => {
-  console.log('PRODUCT RENDERED')
   const { id, title, description, addedToCart } = data
 
   return (
